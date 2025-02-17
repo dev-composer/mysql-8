@@ -4,7 +4,7 @@ volumes:
 
 services:
   mysql-db:
-    image: ${DOCKER_REGISTRY}/dandan-public/mysql:8
+    image: "${MYSQL_IMAGE:mysql}"
     ports:
       - "${EXPOSED_PORT}:3306"
     volumes:
@@ -12,4 +12,4 @@ services:
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
       - /etc/localtime:/etc/localtime
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
